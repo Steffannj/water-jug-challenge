@@ -1,0 +1,30 @@
+<import from="custom-elements/jugDetails/jugDetails" />
+<import from="custom-elements/challengeResultTable/challengeResultTable" />
+
+<div class="container py-4">
+    <div class="row gx-5">
+        <!--Jug1 form -->
+        <div class="col-md-6">
+            <jug-details jug.two-way="jug1" view-model.ref="jug1ComponentRef"></jug-details>
+        </div>
+
+        <!--Jug2 form -->
+        <div class="col-md-6">
+            <jug-details jug.two-way="jug2" view-model.ref="jug2ComponentRef"></jug-details>
+        </div>
+
+        <!--Target amount -->
+        <div class="col-md-4 offset-md-4 text-center" validation-errors.from-view="errors">
+            <label class="form-label" for="target-amount">Target Amount</label>
+            <input class="form-control" type="number" name="target-amount" value.bind="targetAmount | number & validate"
+                focus.trigger="self.select()" ref="self">
+            <div class="text-danger text-start">
+                <span repeat.for="error of errors">${error.result.message}</span>
+            </div>
+            <button class="btn btn-success w-100 mt-3" click.trigger="calculate()">Calculate</button>
+        </div>
+
+        <!--Target amount -->
+        <challenge-result-table></challenge-result-table>
+    </div>
+</div>

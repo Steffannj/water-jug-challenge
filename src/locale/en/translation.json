@@ -1,0 +1,10 @@
+{
+    "jugActionType": {
+        "0": "FillJug1",
+        "1": "EmptyJug1",
+        "2": "FillJug2",
+        "3": "EmptyJug2",
+        "4": "PourJug1IntoJug2",
+        "5": "PourJug2IntoJug1"
+    }
+}
