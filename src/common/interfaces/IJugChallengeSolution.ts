@@ -1,5 +1,5 @@
 import { IJugChallengeSolutionStep } from "./IJugChallengeSolutionStep";
 
-export class IJugChallengeSolution {
+export interface IJugChallengeSolution {
     steps: Array<IJugChallengeSolutionStep>;
 }

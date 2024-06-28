@@ -2,5 +2,9 @@ import { IJugChallengeSolution } from "../interfaces/IJugChallengeSolution";
 import { JugChallengeSolutionStep } from "./jugChallengeSolutionStep";
 
 export class JugChallengeSolution implements IJugChallengeSolution {
-    steps: Array<JugChallengeSolutionStep>;
+    steps: Array<JugChallengeSolutionStep> = [];
+
+    constructor(){
+        this.steps = [];
+    }
 }

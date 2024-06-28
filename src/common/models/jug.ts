@@ -7,14 +7,12 @@ export class Jug implements IJug {
     state: JugState;
     capacity: number;
     color: JugColor;
-    amountFilled: number;
+    waterLevel: number;
 
     constructor(id: string, color?: JugColor) {
         this.id = id;
         this.color = color;
         this.state = JugState.Empty;
-        this.capacity = 0;
-        this.amountFilled = 0;
     }
 
     setCapacity(capacity: number) {

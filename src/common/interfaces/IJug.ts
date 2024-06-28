@@ -6,7 +6,7 @@ export interface IJug {
     capacity: number;
     state: JugState;
     color: JugColor;
-    amountFilled: number;
+    waterLevel: number;
 
     setCapacity(capacity: number): void;
     setState(state: JugState): void;

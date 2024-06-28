@@ -1,12 +1,12 @@
 import Aurelia from 'aurelia';
-import { MyApp } from './my-app';
-import { initialState } from './initialstate';
 import { RouterConfiguration } from '@aurelia/router';
 import { StoreConfiguration } from '@aurelia/store-v1';
 import { I18nConfiguration } from '@aurelia/i18n';
-import * as en from './locale/en/translation.json';
-import { NumberValueConverter } from './common';
 import { ValidationHtmlConfiguration } from '@aurelia/validation-html';
+import { NumberValueConverter } from './common';
+import { Shell } from './shell';
+import { initialState } from './initialstate';
+import * as en from './locale/en/translation.json';
 
 Aurelia
   .register(
@@ -21,6 +21,6 @@ Aurelia
       };
     }),
   )
-  .register(NumberValueConverter) //registering global value converters 
-  .app(MyApp)
+  .register(NumberValueConverter) // Registering global value converters 
+  .app(Shell)
   .start();
