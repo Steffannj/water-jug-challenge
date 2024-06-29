@@ -40,10 +40,13 @@ export class WaterJugChallenge {
             .max(100)
             .then()
             .satisfies((value) => {
-                if (this.challenge.jug1.capacity < this.challenge.jug2.capacity)
-                    return value >= this.challenge.jug1.capacity && value <= this.challenge.jug2.capacity;
-                else if (this.challenge.jug1.capacity > this.challenge.jug2.capacity)
-                    return value <= this.challenge.jug1.capacity && value >= this.challenge.jug2.capacity;
+                const jug1Capacity = this.challenge.jug1.capacity;
+                const jug2Capacity = this.challenge.jug2.capacity;
+
+                if (jug1Capacity < jug2Capacity)
+                    return value >= jug1Capacity && value <= jug2Capacity;
+                else if (jug1Capacity > jug2Capacity)
+                    return value <= jug1Capacity && value >= jug2Capacity;
             })
             .withMessage(`Target Amount must be between or equal to Jug 1 and Jug 2 capacities.`)
     }
@@ -55,7 +58,11 @@ export class WaterJugChallenge {
 
     async tryToFindSolutions() {
         if (await this.areAllInputsValid())
-            this.jugService.findSolutions(this.challenge);
+            try {
+                this.jugService.findSolutions(this.challenge);
+            } catch (error) {
+                // Notify user that something went wrong
+            }
     }
 
     private async areAllInputsValid() {

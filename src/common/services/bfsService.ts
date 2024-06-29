@@ -4,7 +4,7 @@ import { IChallengeSolution, IChallengeSolutionStep } from "../interfaces";
 export class BfsService {
     private seenScenarios: Set<string>; // Seen scenarios that we need to skip to avoid infinite loop
     private solutions: IChallengeSolution[];
-    private queueOfPossibleScenarios: { jug1WaterLevel: number, jug2WaterLevel: number, steps: IChallengeSolutionStep[] }[];
+    private queueOfPossibleScenarios: { jug1WaterLevel: number, jug2WaterLevel: number, stepsTaken: IChallengeSolutionStep[] }[];
 
     constructor() {
         this.init();
@@ -13,14 +13,14 @@ export class BfsService {
     private init() {
         this.seenScenarios = new Set();
         this.solutions = [];
-        this.queueOfPossibleScenarios = [{ jug1WaterLevel: 0, jug2WaterLevel: 0, steps: [] }];
+        this.queueOfPossibleScenarios = [{ jug1WaterLevel: 0, jug2WaterLevel: 0, stepsTaken: [] }];
     }
 
     findSolutions(jug1Capacity: number, jug2Capacity: number, targetAmount: number): IChallengeSolution[] {
         this.init();
 
         while (this.queueOfPossibleScenarios.length > 0) {
-            const { jug1WaterLevel, jug2WaterLevel, steps } = this.queueOfPossibleScenarios.shift();
+            const { jug1WaterLevel, jug2WaterLevel, stepsTaken } = this.queueOfPossibleScenarios.shift();
 
             // Mark this scenario as seen
             this.seenScenarios.add(`${jug1WaterLevel},${jug2WaterLevel}`);
@@ -28,7 +28,7 @@ export class BfsService {
             // Check if we have reached the target
             const isTargetReached = jug1WaterLevel === targetAmount || jug2WaterLevel === targetAmount;
             if (isTargetReached) {
-                this.solutions.push({ steps: steps });
+                this.solutions.push({ steps: stepsTaken });
                 continue;
             }
 
@@ -36,7 +36,7 @@ export class BfsService {
             const possibleSteps = this.createAllPosibleSteps(jug1Capacity, jug1WaterLevel, jug2Capacity, jug2WaterLevel);
             for (const step of possibleSteps)
                 if (!this.isScenarioSeen(step) && !this.isScenarioAlreadyInQueue(step))
-                    this.addScenarioToQueue(step, steps);
+                    this.addScenarioToQueue(step, stepsTaken);
         }
 
         return this.solutions;
@@ -47,7 +47,7 @@ export class BfsService {
             {
                 jug1WaterLevel: step.jug1WaterLevel,
                 jug2WaterLevel: step.jug2WaterLevel,
-                steps: [...steps, { jug1WaterLevel: step.jug1WaterLevel, jug2WaterLevel: step.jug2WaterLevel, action: step.action }]
+                stepsTaken: [...steps, { jug1WaterLevel: step.jug1WaterLevel, jug2WaterLevel: step.jug2WaterLevel, action: step.action }]
             }
         );
     }

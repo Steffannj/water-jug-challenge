@@ -18,6 +18,6 @@ export class Shell {
     ];
 
     constructor(readonly jugService: IJugService = resolve(IJugService)) {
-        this.jugService.registerActions();
+        this.jugService.registerActions(); // Registering aurelia store actions 
     }
 }

@@ -2,15 +2,13 @@ import { bindable, newInstanceForScope, resolve } from "aurelia";
 import { IValidationController } from "@aurelia/validation-html";
 import { IValidationRules } from "@aurelia/validation";
 import { IJug } from "../../common";
-import { Store } from "@aurelia/store-v1";
 
 export class JugDetails {
     @bindable jug: IJug;
 
     constructor(
         private validationController = resolve(newInstanceForScope(IValidationController)),
-        private validationRules = resolve(IValidationRules),
-        private store = resolve(Store)
+        private validationRules = resolve(IValidationRules)
     ) {
     }
 
