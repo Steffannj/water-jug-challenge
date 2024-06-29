@@ -1,5 +1,5 @@
+import { IJugService } from './common';
 import { resolve } from "aurelia";
-import { JugService } from "./common";
 import { Home } from "./pages/home/home";
 import { ResultsHistory } from "./pages/resultsHistory/resultsHistory";
 
@@ -7,17 +7,17 @@ export class Shell {
     static routes = [
         {
             path: '',
-            component: Home,
+            component: Home, // Jug Water Challenge route
             title: 'Home'
         },
         {
             path: 'history',
-            component: ResultsHistory,
+            component: ResultsHistory, // My challenges history
             title: 'History'
         },
     ];
 
-    constructor(readonly jugService = resolve(JugService)) {
+    constructor(readonly jugService: IJugService = resolve(IJugService)) {
         this.jugService.registerActions();
     }
 }

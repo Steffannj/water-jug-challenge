@@ -1,4 +1,4 @@
-export * from './actionHandlers/jugChallengeActionHandlers';
+export * from './actionHandlers/challengeActionHandlers';
 export * from './enums/index';
 export * from './interfaces/index';
 export * from './models/index';

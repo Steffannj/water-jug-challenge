@@ -4,9 +4,10 @@ import { IChallenge } from '../../common';
 import { IDisposable, IEventAggregator, resolve } from 'aurelia';
 import { RouterNavigationEndEvent } from '@aurelia/router';
 
+/* eslint-disable */
 @connectTo({
     selector: {
-        challengesHistory: (store: any) => store.state.pipe(pluck('challengesHistory')),
+        challengesHistory: (store: any) => store.state.pipe(pluck('challengesHistory'))
     }
 })
 export class Navbar {

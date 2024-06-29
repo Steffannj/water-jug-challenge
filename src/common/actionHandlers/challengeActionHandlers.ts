@@ -1,5 +1,5 @@
 import { IAppState } from "../interfaces/IAppState";
-import { IChallenge, IJugChallengeSolution } from '../interfaces';
+import { IChallenge, IChallengeSolution } from '../interfaces';
 
 export function addChallengeToHistory(currentState: IAppState, currentChallenge: IChallenge) {
   const newState = Object.assign({}, currentState);
@@ -14,7 +14,7 @@ export function removeChallengeFromHistory(currentState: IAppState, challenge: I
   return newState;
 }
 
-export function updateCurrentChallengeSolutions(currentState: IAppState, solutions: IJugChallengeSolution[]) {
+export function updateCurrentChallengeSolutions(currentState: IAppState, solutions: IChallengeSolution[]) {
   const newState = Object.assign({}, currentState);
   newState.currentChallenge.bestSolution = solutions[0];
   newState.currentChallenge.worstSolution = solutions[1];

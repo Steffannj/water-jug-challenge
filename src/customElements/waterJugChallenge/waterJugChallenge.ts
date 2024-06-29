@@ -6,9 +6,10 @@ import { newInstanceForScope, resolve } from 'aurelia';
 import { IValidationRules } from '@aurelia/validation';
 import { IValidationController } from '@aurelia/validation-html';
 
+/* eslint-disable */
 @connectTo({
     selector: {
-        challenge: (store: any) => store.state.pipe(pluck('currentChallenge')),
+        challenge: (store: any) => store.state.pipe(pluck('currentChallenge'))
     }
 })
 export class WaterJugChallenge {

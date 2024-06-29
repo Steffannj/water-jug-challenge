@@ -3,9 +3,10 @@ import { pluck } from "rxjs";
 import { IChallenge, removeChallengeFromHistory } from "../../common";
 import { resolve } from "aurelia";
 
+/* eslint-disable */
 @connectTo({
     selector: {
-        challengesHistory: (store: any) => store.state.pipe(pluck('challengesHistory')),
+        challengesHistory: (store: any) => store.state.pipe(pluck('challengesHistory'))
     }
 })
 export class ResultsHistory {

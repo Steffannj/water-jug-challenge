@@ -1,13 +1,13 @@
 import { JugColor } from "../enums";
-import { IChallenge, IJug, IJugChallengeSolution } from "../interfaces";
+import { IChallenge, IJug, IChallengeSolution } from "../interfaces";
 import { Jug } from "./jug";
 
 export class Challenge implements IChallenge {
     jug1: IJug;
     jug2: IJug;
     targetAmount: number;
-    bestSolution: IJugChallengeSolution;
-    worstSolution: IJugChallengeSolution;
+    bestSolution: IChallengeSolution;
+    worstSolution: IChallengeSolution;
     noSolutionsFound: boolean;
 
     constructor() {

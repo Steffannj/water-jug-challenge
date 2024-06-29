@@ -1,6 +1,6 @@
 import { bindable } from "aurelia";
-import { IJugChallengeSolution } from "../../common";
+import { IChallengeSolution } from "../../common";
 
 export class ChallengeSolutionTable {
-    @bindable solution: IJugChallengeSolution;
+    @bindable solution: IChallengeSolution;
 }
