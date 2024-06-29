@@ -1,1 +1,30 @@
-history
+<table class="table" if.bind="challengesHistory.length">
+    <thead>
+        <tr>
+            <th>Jug 1 capacity</th>
+            <th>Jug 2 capacity</th>
+            <th>Target amount</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr repeat.for="challenge of challengesHistory">
+            <td>
+                <i class="bi bi-bucket-fill text-${challenge.jug1.color} me-2"></i>
+                ${challenge.jug1.capacity}
+            </td>
+            <td>
+                <i class="bi bi-bucket-fill text-${challenge.jug2.color} me-2"></i>
+                ${challenge.jug2.capacity}
+            </td>
+            <td>${challenge.targetAmount}</td>
+            <td>
+                <button class="btn btn-danger" click.trigger="removeChallenge(challenge)">Remove</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<h3 else class="text-center mt-5">
+    History is empty
+</h3>

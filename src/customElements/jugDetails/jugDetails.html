@@ -1,14 +1,16 @@
+<import from="../jugColorPicker/jugColorPicker" />
 <div class="mb-5">
     <div class="d-flex justify-content-center align-items-end">
         <div validation-errors.from-view="errors">
             <label class="form-label" for="jug-${jug.id}-capacity">Jug ${jug.id} Capacity</label>
             <input type="number" name="jug-${jug.id}-capacity" class="form-control"
-                value.bind="jug.capacity | number & validate" placeholder="Enter capacity" focus.trigger="self.select()" ref="self" min="1">
+                value.bind="jug.capacity | number & validate" placeholder="Enter capacity" focus.trigger="self.select()"
+                ref="self" min="1">
             <div class="text-danger">
                 <span repeat.for="error of errors">${error.result.message}</span>
             </div>
         </div>
-        <i class="bi bi-bucket-fill text-${jug.color} jug-icon ms-2">
-        </i>
+        <i class="bi bi-bucket-fill text-${jug.color} jug-icon ms-2"></i>
+        <jug-color-picker jug.bind="jug"></jug-color-picker>
     </div>
 </div>

@@ -1,0 +1,43 @@
+<import from="customElements/jugDetails/jugDetails" />
+<import from="customElements/challengeSolutionTable/challengeSolutionTable" />
+
+<div class="container py-4">
+    <form submit.trigger="tryToFindSolutions()">
+        <div class="row gx-5">
+            <!--Jug1 form -->
+            <div class="col-md-6">
+                <jug-details jug.two-way="challenge.jug1" component.ref="jug1ComponentRef"></jug-details>
+            </div>
+
+            <!--Jug2 form -->
+            <div class="col-md-6">
+                <jug-details jug.two-way="challenge.jug2" component.ref="jug2ComponentRef"></jug-details>
+            </div>
+
+            <!--Target amount -->
+            <div class="col-md-4 offset-md-4 text-center" validation-errors.from-view="errors">
+                <label class="form-label" for="target-amount">Target Amount</label>
+                <input class="form-control" type="number" name="target-amount"
+                    value.bind="challenge.targetAmount | number & validate" placeholder="Enter target amount"
+                    focus.trigger="self.select()" ref="self">
+                <div class="text-danger text-start">
+                    <span repeat.for="error of errors">${error.result.message}</span>
+                </div>
+                <button class="btn btn-success w-100 mt-3" type="submit">Calculate</button>
+            </div>
+        </div>
+    </form>
+
+    <div if.bind="challenge.bestSolution">
+        <!--Best solution -->
+        <h3>Best solution</h3>
+        <challenge-solution-table solution.bind="challenge.bestSolution"></challenge-solution-table>
+
+        <!--Worst solution -->
+        <h3>Worst solution</h3>
+        <challenge-solution-table solution.bind="challenge.worstSolution"></challenge-solution-table>
+    </div>
+    <h3 if.bind="challenge.noSolutionsFound" class="text-center mt-5">
+        No solutions found
+    </h3>
+</div>

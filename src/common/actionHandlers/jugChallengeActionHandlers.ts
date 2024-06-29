@@ -1,15 +1,24 @@
 import { IAppState } from "../interfaces/IAppState";
-import { IChallenge } from '../interfaces';
+import { IChallenge, IJugChallengeSolution } from '../interfaces';
 
-export function updateHistory(currentState: IAppState, currentChallenge: IChallenge) {
+export function addChallengeToHistory(currentState: IAppState, currentChallenge: IChallenge) {
   const newState = Object.assign({}, currentState);
-  newState.challengesHistory.push(currentChallenge);
+  if (!newState.challengesHistory.find(c => JSON.stringify(c) == JSON.stringify(currentChallenge)))
+    newState.challengesHistory.push(structuredClone(currentChallenge));
   return newState;
 }
 
-export function updateCurrentChallengeState(currentState: IAppState, currentChallenge: IChallenge) {
+export function removeChallengeFromHistory(currentState: IAppState, challenge: IChallenge) {
   const newState = Object.assign({}, currentState);
-  newState.currentChallenge = currentChallenge;
+  newState.challengesHistory = newState.challengesHistory.filter(c => c !== challenge);
+  return newState;
+}
+
+export function updateCurrentChallengeSolutions(currentState: IAppState, solutions: IJugChallengeSolution[]) {
+  const newState = Object.assign({}, currentState);
+  newState.currentChallenge.bestSolution = solutions[0];
+  newState.currentChallenge.worstSolution = solutions[1];
+  newState.currentChallenge.noSolutionsFound = false;
   return newState;
 }
 
