@@ -35,3 +35,6 @@ Run unit tests in watch mode.
 ## Analyze webpack bundle
 
     npm run analyze
+
+## Jug Water Challenge Solution
+    This implementation of the Jug Water Challenge using a BFS approach efficiently finds all possible solutions to measure a specific amount of water using two jugs. The BfsService class encapsulates the logic and provides an easy-to-use interface for finding solutions.
