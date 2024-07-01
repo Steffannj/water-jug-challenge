@@ -38,17 +38,6 @@ export class WaterJugChallenge {
             .min(1)
             .then()
             .max(100)
-            .then()
-            .satisfies((value) => {
-                const jug1Capacity = this.challenge.jug1.capacity;
-                const jug2Capacity = this.challenge.jug2.capacity;
-
-                if (jug1Capacity < jug2Capacity)
-                    return value >= jug1Capacity && value <= jug2Capacity;
-                else if (jug1Capacity > jug2Capacity)
-                    return value <= jug1Capacity && value >= jug2Capacity;
-            })
-            .withMessage(`Target Amount must be between or equal to Jug 1 and Jug 2 capacities.`)
     }
 
     async isTargetAmountValid(): Promise<boolean> {

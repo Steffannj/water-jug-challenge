@@ -1,0 +1,28 @@
+<import from="../challengeSolutionTable/challengeSolutionTable" />
+
+<div class="offcanvas offcanvas-start challenge-offcanvas" tabindex="-1" id="challengeDrawer"
+    aria-labelledby="challengeDrawerLabel" data-bs-scroll="true">
+    <div class="offcanvas-header">
+        <div class="offcanvas-title" id="challengeDrawerLabel">
+            <div>
+                Jug 1 capacity: <span class="fw-bolder">${challenge.jug1.capacity}</span>
+            </div>
+            <div>
+                Jug 2 capacity: <span class="fw-bolder">${challenge.jug2.capacity}</span>
+            </div>
+            <div>
+                Target capacity: <span class="fw-bolder">${challenge.targetAmount}</span>
+            </div>
+        </div>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <!--Best solution -->
+        <h5>Best solution</h5>
+        <challenge-solution-table solution.bind="challenge.bestSolution"></challenge-solution-table>
+
+        <!--Worst solution -->
+        <h5>Worst solution</h5>
+        <challenge-solution-table solution.bind="challenge.worstSolution"></challenge-solution-table>
+    </div>
+</div>

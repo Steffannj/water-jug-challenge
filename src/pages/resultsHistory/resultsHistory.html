@@ -1,10 +1,12 @@
-<table class="table" if.bind="challengesHistory.length">
+<import from="../../customElements/challengeDrawer/challengeDrawer" />
+
+<table class="table mt-5" if.bind="challengesHistory.length">
     <thead>
         <tr>
             <th>Jug 1 capacity</th>
             <th>Jug 2 capacity</th>
             <th>Target amount</th>
-            <th>Action</th>
+            <th class="text-end">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -18,8 +20,14 @@
                 ${challenge.jug2.capacity}
             </td>
             <td>${challenge.targetAmount}</td>
-            <td>
-                <button class="btn btn-danger" click.trigger="removeChallenge(challenge)">Remove</button>
+            <td class="text-end">
+                <button class="btn btn-danger me-2" click.trigger="removeChallenge(challenge)">Remove</button>
+                <!-- Opens challenge details in drawer -->
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#challengeDrawer" aria-controls="challengeDrawer"
+                    click.trigger=selectChallenge(challenge)>
+                    Show solutions
+                </button>
             </td>
         </tr>
     </tbody>
@@ -28,3 +36,5 @@
 <h3 else class="text-center mt-5">
     History is empty
 </h3>
+
+<challenge-drawer challenge.bind="selectedChallenge"></challenge-drawer>

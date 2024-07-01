@@ -7,6 +7,7 @@ import { NumberValueConverter } from './common';
 import { Shell } from './shell';
 import { initialState } from './initialstate';
 import * as en from './locale/en/translation.json';
+import 'bootstrap';
 
 Aurelia
   .register(
